@@ -691,6 +691,13 @@ def footer(y):
            "sans", 10, GRAY)
 
 
+def check_story_counts():
+    pictured = len(LEADS) + len(MEDIUMS)
+    assert pictured == 13, "expected 13 pictured stories, got %d" % pictured
+    total = pictured + len(ALSO)
+    assert total == 36, "expected 36 total stories, got %d" % total
+
+
 def draw_page():
     masthead()
     timeline_band()
@@ -705,6 +712,7 @@ def draw_page():
 
 
 def main():
+    check_story_counts()
     draw_page()
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
     os.makedirs(out_dir, exist_ok=True)
