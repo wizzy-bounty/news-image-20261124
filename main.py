@@ -12,7 +12,13 @@ network. Writes exactly one file: <MAKEFUN_OUTPUT_DIR>/entry.png
 import base64
 import os
 import struct
+import sys
 import zlib
+
+# The grader runs this file as `python3 -P -s /bot/main.py`: safe-path mode
+# leaves the script's own directory off sys.path, so add it explicitly or
+# the fontdata import below fails in the sandbox.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from fontdata import FONTS
 
